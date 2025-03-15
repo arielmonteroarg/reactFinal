@@ -4,6 +4,8 @@ import { db } from '../../config/Firebase'; // Importa Firestore
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { useNavigate } from 'react-router-dom'; // Importa useNavigate para redirigir
 import './Purchase.css'; // Estilos para el componente
+import { toast } from 'react-toastify';
+import Loader from '../Loader/Loader'; // Importa el componente Loader
 
 const HistoryPurchase = () => {
   const { user } = useUser(); // Obtén el usuario actual
@@ -14,10 +16,6 @@ const HistoryPurchase = () => {
 
   useEffect(() => {
     // Si el usuario no está autenticado y la autenticación ya se verificó, redirige a la página de inicio de sesión
- /*    if (!user && authChecked) {
-      navigate('/auth'); // Cambia a página de inicio de sesión
-      return;
-    } */
       if (!authChecked && !user) {
         navigate('/auth'); // Cambia a la página de inicio de sesión
         return;
@@ -40,7 +38,8 @@ const HistoryPurchase = () => {
 
           setPurchases(purchasesData);
         } catch (error) {
-          console.error('Error al obtener el historial de compras:', error);
+      
+          toast.error(`Error al obtener el historial de compras: ${error} `,{pauseOnHover: true,closeOnClick: true});
         } finally {
           setLoading(false);
         }
@@ -67,9 +66,7 @@ const HistoryPurchase = () => {
     return null;
   }
 
-  if (loading) {
-    return <div>Cargando historial de compras...</div>;
-  }
+  if (loading) return <div><Loader /></div>;
 
   return (
     <div className="purchase-history">
@@ -80,6 +77,7 @@ const HistoryPurchase = () => {
         <ul>
           {purchases.map((purchase) => (
             <li key={purchase.id} className="purchase-item">
+              <h3> Codigo de Envio/Seguimiento : {purchase.codigoEnvio}</h3>
               <p>Fecha: {new Date(purchase.date.seconds * 1000).toLocaleDateString()}</p>
               <p>Total: ${purchase.total}</p>
               <ul>

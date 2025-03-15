@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import { db } from "../../config/Firebase";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { toast } from 'react-toastify';
+import Loader from '../Loader/Loader'; // Importa el componente Loader
+
 
 const ItemListContainer = ({ greeting }) => {
   const { categoryId } = useParams();
@@ -33,7 +35,7 @@ const ItemListContainer = ({ greeting }) => {
         setProducts(productList);
       } catch (error) {
      
-        toast.error('Error al cargar los productos desde Base de Datos:.');
+        toast.error('Error al cargar los productos desde Base de Datos:.',{pauseOnHover: true,closeOnClick: true});
       } finally {
         setLoading(false);
       }
@@ -42,8 +44,12 @@ const ItemListContainer = ({ greeting }) => {
     fetchProducts();
   }, [categoryId]);
 
-  if (loading) return <p>Cargando productos...</p>;
-  if (products.length === 0) return <p>No hay productos en esta categoría</p>;
+  if (loading) return <div><Loader /></div>;
+  if (products.length === 0) return (<div className="cart-empty"> 
+                                    <h1>¡Ups!</h1>
+                                    <p>No hay productos en esta categoría.</p>
+                                    <Link to="/">Volver</Link>
+                                    </div>);
 
   return (
     <div className="container">

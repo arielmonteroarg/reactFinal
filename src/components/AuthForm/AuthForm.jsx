@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useUser } from '../../context/UserContext';
 import { useNavigate } from 'react-router-dom'; // Importa useNavigate
 import './AuthForm.css';
+import { toast } from 'react-toastify';
+
 
 
 const AuthForm = () => {
@@ -23,7 +25,9 @@ const handleSubmit = async (e) => {
     }
     navigate('/');
   } catch (error) {
-
+    const errorMessage = error.message || 'Error desconocido al iniciar sesión';
+    toast.error(errorMessage,{pauseOnHover: true,closeOnClick: true});  // Mostrar el error con toast
+    //Aparente mensaje de error de Firebase muestra error en consola de Bad Request aun cuando lo estoy tratando con el catch
   }
 };
 

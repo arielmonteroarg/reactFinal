@@ -32,7 +32,8 @@ export const UserProvider = ({ children }) => {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       setUser(userCredential.user);
     } catch (error) {
-      toast.error(`Error al iniciar sesión: Inténtalo de nuevo. `); 
+      const errorMessage = error.message || 'Error desconocido al iniciar sesión';
+      toast.error(errorMessage); 
     }
   };
  

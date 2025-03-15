@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState} from 'react';
 import { useCart } from '../../context/CartContext'; // Importa el hook useCart
 import { useUser } from '../../context/UserContext'; // Importa el hook useUser
 import {updateStock} from "../UpdateItems/UpdateItem";
@@ -6,6 +6,7 @@ import { toast } from 'react-toastify';
 import './Cart.css'; // Estilos para el componente
 import { savePurchase } from '../Purchase/AddPurchase'; // Importa la función savePurchase
 import { Link } from 'react-router-dom'; // Importa Link para redirigir
+import Loader from '../Loader/Loader'; // Importa el componente Loader
 
 
 
@@ -13,15 +14,20 @@ const Cart = () => {
   const { cart, clearCart, removeFromCart, getTotalItems, getTotalPrice } = useCart();
   const { user } = useUser(); // Obtén el usuario actual
 
+  
+  const [loading, setLoading] = useState(false); // Estado para manejar el loading
+
   // Si el carrito está vacío, muestra un mensaje
   if (cart.length === 0) {
     return <div className="cart-empty"> 
       <h1>¡Ups!</h1>
       <p>El carrito está vacío.</p>
+      <Link to="/">Ir a Productos</Link>
       </div>;
   }
 
   const handleCheckout = async () => {
+    setLoading(true); // Activar el loader
     try {
       // Recorre cada producto en el carrito
       for (const item of cart) {
@@ -58,6 +64,9 @@ const Cart = () => {
         draggable: true,
       });
     }
+    finally {
+      setLoading(false); // Desactivar el loader después de la carga
+    }
   };
 
 
@@ -69,12 +78,17 @@ const Cart = () => {
   return (
     <div className="cart-container">
       <h2>Carrito de Compras</h2>
+      {loading ? (
+        // Si está cargando, muestra el loader
+        <Loader />
+      ) : (
       <div className="cart-items">
         {cart.map((item) => (
           <div key={item.id} className="cart-item">
             <img src={require(`../../img/${item.image}`)} alt={item.title} className="cart-item-image" />
             <div className="cart-item-details">
               <h3>{item.title}</h3>
+              <p>Descripcion: {item.description}</p>
               <p>Cantidad: {item.quantity}</p>
               <p>Precio unitario: ${item.price}</p>
               <p>Subtotal: ${item.price * item.quantity}</p>
@@ -87,7 +101,9 @@ const Cart = () => {
             </div>
           </div>
         ))}
+
       </div>
+      )}
       <div className="cart-summary">
         <h3>Resumen del Carrito</h3>
         <p>Total de productos: {getTotalItems()}</p>
@@ -100,8 +116,8 @@ const Cart = () => {
            <button onClick={handleCheckout} className="checkout-button">
             Finalizar Compra
           </button>
-          <button onClick={handleclearCart}  className="checkout-button">
-          Limpiar Carrito
+          <button onClick={handleclearCart}  className="checkout-limpiar">
+          Vaciar Carrito
         </button>
           </>
  

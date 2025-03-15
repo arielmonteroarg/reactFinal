@@ -6,6 +6,8 @@ import { db } from "../../config/Firebase";
 import { collection, getDocs } from "firebase/firestore";
 import { useCart } from '../../context/CartContext'; // Ruta correcta
 import { toast } from 'react-toastify';
+import { Link } from 'react-router-dom';
+import Loader from '../Loader/Loader'; // Importa el componente Loader
 
 const ItemDetailContainer = ({ greeting }) => {
   const { id } = useParams(); // Captura el ID de la URL
@@ -40,8 +42,12 @@ const ItemDetailContainer = ({ greeting }) => {
     fetchProducts();
   }, [id]);
 
-  if (loading) return <p>Cargando producto...</p>;
-  if (!product) return <p>Producto no encontrado</p>;
+  if (loading) return <div><Loader /></div>;
+  if (!product) return (<div className="cart-empty"> 
+                        <h1>¡Ups!</h1>
+                        <p>Productos No Encontrado.</p>
+                        <Link to="/">Ir a Productos</Link>
+                        </div>);
 
   const { image, title, category, price, description } = product;
 
@@ -49,7 +55,7 @@ const ItemDetailContainer = ({ greeting }) => {
     const handleAddToCart = () => {
       if (contadorUno > 0) {
         addToCart(product, contadorUno); // Pasa el producto y la cantidad
-        toast.success(`${contadorUno} ${title} se agrego al carrito`);
+        toast.success(`${contadorUno} ${title} se agrego al carrito`,{pauseOnHover: true,closeOnClick: true});
       } else {
         toast.error('La cantidad debe ser mayor a 0.',{pauseOnHover: true,closeOnClick: true});
       }

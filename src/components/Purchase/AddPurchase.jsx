@@ -2,7 +2,7 @@ import { db } from '../../config/Firebase'; // Importa Firestore
 import { collection, addDoc } from "firebase/firestore";
 import { toast } from 'react-toastify';
 
-
+//funcion para crear un codigo aleatorio
 const generateRandomCode = (length = 10) => {
   const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
   let result = '';
@@ -15,6 +15,7 @@ const generateRandomCode = (length = 10) => {
 
   return `${hours}${minutes}${result}`;
 };
+//asigno el el codigo
 const codigoEnvio= generateRandomCode(15);
 export const savePurchase = async (userId, cart, total) => {
   try {
@@ -29,15 +30,15 @@ export const savePurchase = async (userId, cart, total) => {
         quantity: item.quantity,
       })),
       total, // Total de la compra
-      codigoEnvio,
+      codigoEnvio, //codigo de envio
       date: new Date(), // Fecha de la compra
     };
 
     // Guarda la compra en Firestore
     await addDoc(collection(db, 'purchases'), purchaseData);
-    toast.success(`Compra guardada correctamente codigo de envio : ${codigoEnvio} `);
+    toast.success(`Compra guardada correctamente codigo de envio : ${codigoEnvio} `,{pauseOnHover: true,closeOnClick: true});
   } catch (error) {
-    toast.error(`Error al guardar la compra: ${error} `);
+    toast.error(`Error al guardar la compra: ${error} `,{pauseOnHover: true,closeOnClick: true});
     throw error; // Relanza el error para manejarlo en el componente que llama a esta función
   }
 };

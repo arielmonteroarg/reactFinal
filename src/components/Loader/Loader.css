@@ -1,0 +1,21 @@
+/* Loader.css */
+.loader-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Asegura que ocupe toda la altura de la pantalla */
+  }
+  
+  .loader {
+    border: 16px solid #f3f3f3; /* Color del borde de fondo */
+    border-top: 16px solid blue; /* Color azul para el borde superior */
+    border-radius: 50%; /* Hace que sea un círculo */
+    width: 120px; /* Tamaño más grande */
+    height: 120px; /* Tamaño más grande */
+    animation: spin 2s linear infinite; /* Animación de giro */
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }

@@ -63,3 +63,29 @@
   .item-button:hover {
     background-color: #2563eb; /* Azul más oscuro al pasar el mouse */
   }
+
+
+  
+  .cart-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 40vh; /* Ocupa toda la altura de la pantalla */
+    background-color: #f8f9fa; /* Fondo claro */
+    color: #343a40; /* Color de texto oscuro */
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .cart-empty h1 {
+    font-size: 3rem; /* Tamaño grande para el código de error */
+    margin: 0;
+    color: #dc3545; /* Color rojo para el código de error */
+  }
+  
+  .cart-empty p {
+    font-size: 1.5rem; /* Tamaño de texto para el mensaje */
+    margin: 10px 0 20px 0;
+  }
+  

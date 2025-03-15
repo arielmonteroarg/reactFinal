@@ -28,12 +28,12 @@ export const updateStock = async (productId, quantityPurchased) => {
       });
 
 
-      toast.success(`Stock actualizado correctamente`);
+      toast.success(`Stock actualizado correctamente`,{pauseOnHover: true,closeOnClick: true});
     } else {
       throw new Error('El producto no existe');
     }
   } catch (error) {
-    toast.error(`Error al actualizar el stock:${error}`);
+    toast.error(`Error al actualizar el stock:${error}`,{pauseOnHover: true,closeOnClick: true});
     throw error; // Relanza el error para manejarlo en el componente
   }
 };

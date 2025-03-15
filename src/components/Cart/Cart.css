@@ -115,6 +115,21 @@ stilos de cargando carrito
   flex: 1; /* Permite que los botones crezcan y ocupen el espacio disponible */
 }
 
+.checkout-limpiar {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: auto; /* Cambia el ancho a automático para que no ocupe el 100% */
+  margin: 5px; /* Agrega un margen entre los botones */
+  flex: 1; /* Permite que los botones crezcan y ocupen el espacio disponible */
+}
+
+.checkout-limpiar:hover {
+  background-color: #ff1a1a;
+}
 .checkout-button:hover {
   background-color: #218838;
 }
