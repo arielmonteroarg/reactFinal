@@ -1,0 +1,16 @@
+.cart-widget {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .cart-icon {
+    font-size: 1.5rem;
+    color: #007bff;
+  }
+  
+  .cart-count {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333;
+  }

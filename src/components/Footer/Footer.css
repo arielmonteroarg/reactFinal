@@ -1,0 +1,68 @@
+/* Estilos generales del footer */
+.footer {
+    background-color: #1e3a8a; /* Azul oscuro */
+    color: #fff;
+    padding: 40px 0 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Contenedor del contenido del footer */
+  .footer-content {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  /* Secciones del footer */
+  .footer-section {
+    flex: 1;
+    min-width: 200px;
+    margin: 10px 20px;
+  }
+  
+  .footer-section h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #3b82f6; /* Azul más claro */
+    padding-bottom: 10px;
+    color: #bfdbfe; /* Azul muy claro para el título */
+  }
+  
+  .footer-section p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #bfdbfe; /* Azul muy claro para el texto */
+  }
+  
+  .footer-section ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .footer-section ul li {
+    margin-bottom: 10px;
+  }
+  
+  .footer-section ul li a {
+    color: #bfdbfe; /* Azul muy claro para los enlaces */
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s ease;
+  }
+  
+  .footer-section ul li a:hover {
+    color: #3b82f6; /* Azul más claro al pasar el mouse */
+  }
+  
+  /* Parte inferior del footer */
+  .footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+    padding-top: 10px;
+    border-top: 1px solid #3b82f6; /* Azul más claro */
+    font-size: 14px;
+    color: #bfdbfe; /* Azul muy claro para el texto */
+  }

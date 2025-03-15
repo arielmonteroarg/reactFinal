@@ -1,0 +1,146 @@
+.cart-container {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+/* 
+stilos de cargando carrito
+
+*/
+.cart-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 30vh;
+  background-color: #f8f9fa;
+  color: #343a40;
+  text-align: center;
+  padding: 20px;
+}
+
+.cart-empty h1 {
+  font-size: 3rem;
+  margin: 0;
+  color: #dc3545;
+}
+
+.cart-empty p {
+  font-size: 1.5rem;
+  margin: 10px 0 20px 0;
+}
+
+.cart-empty a {
+  text-decoration: none;
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.cart-empty a:hover {
+  background-color: #0056b3;
+}
+
+.cart-items {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.cart-item-image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-right: 20px;
+}
+
+.cart-item-details {
+  flex-grow: 1;
+}
+
+.cart-item-details h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.cart-item-details p {
+  margin: 5px 0;
+}
+
+.remove-button {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.remove-button:hover {
+  background-color: #ff1a1a;
+}
+
+.cart-summary {
+  margin-top: 20px;
+  padding: 20px;
+  border-top: 1px solid #ddd;
+  text-align: center; /* Centra el contenido del resumen */
+}
+
+.cart-summary h3 {
+  margin-top: 0;
+}
+
+.checkout-button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: auto; /* Cambia el ancho a automático para que no ocupe el 100% */
+  margin: 5px; /* Agrega un margen entre los botones */
+  flex: 1; /* Permite que los botones crezcan y ocupen el espacio disponible */
+}
+
+.checkout-button:hover {
+  background-color: #218838;
+}
+
+/* Contenedor para los botones */
+.button-container {
+  display: flex;
+  justify-content: center; /* Centra los botones horizontalmente */
+  gap: 10px; /* Espacio entre los botones */
+  margin-top: 20px; /* Espacio arriba del contenedor de botones */
+}
+
+
+.btn-login {
+  display: inline-block;
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  text-decoration: none;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.btn-login:hover {
+  background-color: #0056b3;
+}
