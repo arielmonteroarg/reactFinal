@@ -27,6 +27,7 @@ const Cart = () => {
   }
 
   const handleCheckout = async () => {
+    if (loading) return; // Evita llamadas repetidas
     setLoading(true); // Activar el loader
     try {
       // Recorre cada producto en el carrito
@@ -108,13 +109,14 @@ const Cart = () => {
         <h3>Resumen del Carrito</h3>
         <p>Total de productos: {getTotalItems()}</p>
         <p>Total a pagar: ${getTotalPrice()}</p>
-       
-
-
         {user ? (
           <>
-           <button onClick={handleCheckout} className="checkout-button">
-            Finalizar Compra
+          <button 
+            onClick={handleCheckout} 
+            disabled={loading} 
+            className={`checkout-button ${loading ? "disabled" : ""}`}
+            style={{ cursor: loading ? "not-allowed" : "pointer", opacity: loading ? 0.6 : 1 }}>
+            {loading ? "Procesando..." : "Finalizar Compra"}
           </button>
           <button onClick={handleclearCart}  className="checkout-limpiar">
           Vaciar Carrito

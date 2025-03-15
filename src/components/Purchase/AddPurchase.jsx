@@ -15,10 +15,11 @@ const generateRandomCode = (length = 10) => {
 
   return `${hours}${minutes}${result}`;
 };
-//asigno el el codigo
-const codigoEnvio= generateRandomCode(15);
+
 export const savePurchase = async (userId, cart, total) => {
   try {
+    //asigno el el codigo
+  const codigoEnvio= generateRandomCode(15);
     // Datos de la compra
     const purchaseData = {
       userId, // ID del usuario
